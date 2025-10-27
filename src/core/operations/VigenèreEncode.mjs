@@ -39,11 +39,10 @@ class VigenèreEncode extends Operation {
      * @returns {string}
      */
     run(input, args) {
-        const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789",
-            key = args[0].toLowerCase();
-            let output = "";
-            let fail = 0;
-            let keyIndex, msgIndex, chr;
+        const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789", key = args[0].toLowerCase();
+        let output = "";
+        let fail = 0;
+        let keyIndex, msgIndex, chr;
 
         if (!key) throw new OperationError("No key entered");
         if (!/^[a-zA-Z0-9]+$/.test(key)) throw new OperationError("The key must consist only of letters and numbers");
@@ -51,7 +50,7 @@ class VigenèreEncode extends Operation {
         for (let i = 0; i < input.length; i++) {
             const currentChar = input[i];
             const lowerChar = currentChar.toLowerCase();
-            //Implementing logic
+            // Implementing logic
             if (alphabet.indexOf(lowerChar) >= 0) {
                 // Get the corresponding character of key for the current letter
                 chr = key[(i - fail) % key.length];
